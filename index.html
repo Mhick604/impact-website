@@ -9,6 +9,16 @@
     <style>
         /* Suaviza a rolagem da página ao clicar nos links do menu */
         html { scroll-behavior: smooth; }
+        
+        /* Animação de surgimento para as abas */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Esconde barra de rolagem dos botões em telas pequenas */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800 antialiased overflow-x-hidden">
@@ -175,7 +185,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-16 items-center">
-                
                 <div class="flex justify-center relative">
                     <div class="absolute inset-0 bg-blue-400 opacity-20 blur-[100px] rounded-full w-3/4 h-3/4 m-auto"></div>
                     
@@ -228,9 +237,143 @@
         </div>
     </section>
 
+    <section class="py-24 bg-slate-50 border-t border-slate-200" id="recursos">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Visão 360º</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 mb-4">Tudo o que o seu negócio precisa</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">Explore as ferramentas desenhadas para escalar a sua operação e simplificar o seu dia a dia.</p>
+            </div>
+
+            <div class="flex overflow-x-auto pb-4 mb-8 justify-start md:justify-center gap-2 hide-scroll">
+                <button onclick="openTab(event, 'tab-gestao')" class="tab-btn bg-blue-600 text-white shadow-md px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">Gestão de Vendas</button>
+                <button onclick="openTab(event, 'tab-estoque')" class="tab-btn text-slate-600 hover:bg-slate-200 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">Controle de Estoque</button>
+                <button onclick="openTab(event, 'tab-financeiro')" class="tab-btn text-slate-600 hover:bg-slate-200 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">Controle Financeiro</button>
+                <button onclick="openTab(event, 'tab-performance')" class="tab-btn text-slate-600 hover:bg-slate-200 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">Performance</button>
+                <button onclick="openTab(event, 'tab-fiscal')" class="tab-btn text-slate-600 hover:bg-slate-200 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">Organização Fiscal</button>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100 min-h-[400px]">
+                
+                <div id="tab-gestao" class="tab-content block animate-[fadeIn_0.5s_ease-in-out]">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-users"></i></div>
+                            <h3 class="text-3xl font-bold text-slate-900 mb-4">Conheça o seu cliente e decole as vendas</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">Agilize o dia a dia do seu estabelecimento. O Impact ERP oferece múltiplas telas de vendas e um painel completo para relacionamento com o cliente.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Perfil de Consumo:</strong> Atendimento personalizado focado na fidelização.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Gerenciador de Entregas:</strong> Acompanhe as vendas despachadas e taxas.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Motor de Descontos:</strong> Condições especiais para aumentar a retenção.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex items-center justify-center h-full min-h-[300px]">
+                            <i class="fa-solid fa-cash-register text-9xl text-slate-200 drop-shadow-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-estoque" class="tab-content hidden animate-[fadeIn_0.5s_ease-in-out]">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-boxes-stacked"></i></div>
+                            <h3 class="text-3xl font-bold text-slate-900 mb-4">Nunca mais perca vendas por ruptura</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">Mantenha as prateleiras otimizadas. Simplifique pedidos de compra e saiba a hora exata de repor cada mercadoria do seu inventário.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Curva ABC:</strong> Descubra os produtos que mais trazem lucro.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Alertas Inteligentes:</strong> Prevenção de ruptura de estoque em tempo real.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Precificação:</strong> Garanta sua margem de lucro com reajustes dinâmicos.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex items-center justify-center h-full min-h-[300px]">
+                            <i class="fa-solid fa-box-open text-9xl text-slate-200 drop-shadow-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-financeiro" class="tab-content hidden animate-[fadeIn_0.5s_ease-in-out]">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="w-12 h-12 bg-amber-100 text-amber-500 rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-wallet"></i></div>
+                            <h3 class="text-3xl font-bold text-slate-900 mb-4">Torne o seu controle financeiro prático</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">Chega de planilhas confusas. Acompanhe as movimentações de entrada e saída de forma assertiva e blinde a sua empresa contra furos operacionais.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Auditoria de Caixa:</strong> Confira os valores dos caixas e recebedores.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Contas a Pagar/Receber:</strong> Reduza a inadimplência com rotinas organizadas.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Conciliação Bancária:</strong> Cruze dados do sistema com a sua conta do banco.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex items-center justify-center h-full min-h-[300px]">
+                            <i class="fa-solid fa-money-bill-trend-up text-9xl text-slate-200 drop-shadow-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-performance" class="tab-content hidden animate-[fadeIn_0.5s_ease-in-out]">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chart-line"></i></div>
+                            <h3 class="text-3xl font-bold text-slate-900 mb-4">O que não pode ser medido, não pode ser melhorado</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">Tenha clareza para a tomada de decisão. O sistema processa os dados diários e apresenta os resultados em tempo real através de painéis visuais.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Painéis de KPIs:</strong> Faturamento, ticket médio e horários de pico.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>DRE e DFC:</strong> Mensure despesas estruturais e a saúde financeira real.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Comissões:</strong> Calcule o fechamento da equipe de vendas sem erros.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex items-center justify-center h-full min-h-[300px]">
+                            <i class="fa-solid fa-chart-pie text-9xl text-slate-200 drop-shadow-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-fiscal" class="tab-content hidden animate-[fadeIn_0.5s_ease-in-out]">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="w-12 h-12 bg-red-100 text-red-500 rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                            <h3 class="text-3xl font-bold text-slate-900 mb-4">Pague somente o imposto necessário</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">Proteja sua empresa de penalidades e da bitributação. Esqueça as dores de cabeça na hora de cumprir as obrigações fiscais com a contabilidade.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Documentos Fiscais:</strong> Emissão rápida de NFC-e, NF-e e SPED.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>Gestor Tributário:</strong> Classificação automática de alíquotas de produtos.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-700"><strong>100% Homologado:</strong> Adaptado às regras fiscais de todos os estados do Brasil.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex items-center justify-center h-full min-h-[300px]">
+                            <i class="fa-solid fa-landmark text-9xl text-slate-200 drop-shadow-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <a href="https://wa.me/5599999999999" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:bg-[#1ebd5a] transition hover:scale-110 z-50">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <script>
+        function openTab(event, tabName) {
+            // 1. Esconde todos os conteúdos
+            let contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.add('hidden'));
+
+            // 2. Remove a cor ativa de todos os botões (Deixa cinza)
+            let buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(b => {
+                b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                b.classList.add('text-slate-600', 'hover:bg-slate-200');
+            });
+
+            // 3. Mostra o conteúdo clicado
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // 4. Pinta o botão clicado de azul
+            event.currentTarget.classList.remove('text-slate-600', 'hover:bg-slate-200');
+            event.currentTarget.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        }
+    </script>
 </body>
 </html>
