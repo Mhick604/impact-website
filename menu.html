@@ -1,0 +1,7 @@
+<div id="meu-menu-aqui"></div>
+
+<script>
+    fetch('menu.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('meu-menu-aqui').innerHTML = data);
+</script>
